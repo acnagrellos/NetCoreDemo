@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EjemploConfiguracion.Services
 {
-    public class RandomService : IRandomService
+    public class RandomService : IRandomService, IRandomServiceSingleton, IRandomServiceTrasient
     {
         private int _randomNumber;
 

@@ -18,6 +18,8 @@ namespace EjemploConfiguracion
         {
             services.AddTransient<IMiServicio, MiServicio>();
             services.AddScoped<IRandomService, RandomService>();
+            services.AddTransient<IRandomServiceTrasient, RandomService>();
+            services.AddSingleton<IRandomServiceSingleton, RandomService>();
         }
 
         public void Configure(
@@ -29,14 +31,38 @@ namespace EjemploConfiguracion
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                var miservicio = context.RequestServices.GetService(typeof(IMiServicio)) as MiServicio;
-                var randomService = context.RequestServices.GetService(typeof(IRandomService)) as IRandomService;
-                await context.Response.WriteAsync(
-                    $"Hello {miservicio.GetRandomNumber()}! " +
-                    $"RandomService: {randomService.GetRandomNumber()}");
-            });
+            app.Map("/equals", appbuilder =>
+                {
+                    appbuilder.Run(async (context) =>
+                    {
+                        var miservicio = context.RequestServices.GetService(typeof(IMiServicio)) as MiServicio;
+                        var randomService =
+                            context.RequestServices.GetService(typeof(IRandomService)) as IRandomServiceSingleton;
+                        await context.Response.WriteAsync(
+                            $"Hello {miservicio.GetRandomNumber()}! " +
+                            $"RandomService: {randomService.GetRandomNumber()}");
+                    });
+                })
+                .Map("/diferent", appbuilder =>
+                {
+                    appbuilder.Run(async (context) =>
+                    {
+                        var miservicio = context.RequestServices.GetService(typeof(IMiServicio)) as MiServicio;
+                        var randomService =
+                            context.RequestServices.GetService(typeof(IRandomService)) as IRandomServiceTrasient;
+                        await context.Response.WriteAsync(
+                            $"Hello {miservicio.GetRandomNumber()}! " +
+                            $"RandomService: {randomService.GetRandomNumber()}");
+                    });
+                })
+                .Run(async (context) =>
+                {
+                    var miservicio = context.RequestServices.GetService(typeof(IMiServicio)) as MiServicio;
+                    var randomService = context.RequestServices.GetService(typeof(IRandomService)) as IRandomService;
+                    await context.Response.WriteAsync(
+                        $"Hello {miservicio.GetRandomNumber()}! " +
+                        $"RandomService: {randomService.GetRandomNumber()}");
+                });
         }
     }
 }
