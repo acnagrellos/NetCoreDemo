@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EjemploConfiguracion.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters.Internal;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Primitives;
 
 namespace EjemploConfiguracion
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IMiServicio, MiServicio>();
+            services.AddScoped<IRandomService, RandomService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app, 
+            IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -27,7 +31,11 @@ namespace EjemploConfiguracion
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                var miservicio = context.RequestServices.GetService(typeof(IMiServicio)) as MiServicio;
+                var randomService = context.RequestServices.GetService(typeof(IRandomService)) as IRandomService;
+                await context.Response.WriteAsync(
+                    $"Hello {miservicio.GetRandomNumber()}! " +
+                    $"RandomService: {randomService.GetRandomNumber()}");
             });
         }
     }
