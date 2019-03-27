@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace AppSettings
+namespace OrdersApp.Host
 {
     public class Program
     {
@@ -19,7 +19,6 @@ namespace AppSettings
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
                 .ConfigureAppConfiguration((hostingContext, configuration) =>
                 {
                     configuration
@@ -29,12 +28,13 @@ namespace AppSettings
                         .AddUserSecrets<Program>()
                         .AddEnvironmentVariables();
                 })
-                .ConfigureLogging((logging) =>
+                .ConfigureLogging((hostingContext, logging) =>
                 {
                     logging.ClearProviders();
                     logging.AddConsole();
                     logging.AddDebug();
                 })
+                .UseStartup<Startup>()
                 .Build();
     }
 }
