@@ -5,4 +5,5 @@
 5. Usa el logger para logear cuando se borra un usuario como warning.
 6. Cuando se consulte un usuario que no está en el sistema en el GET de un usuario con id, devuelve un 404.
 7. Devuelve un 201 junto con el lugar donde puedes encontrar el usuario en la creación. Mira el método CreatedAt.
+8. Crea una librería de clases. Mete en ella todo lo relacionado con los servicios, para ello llévate el interfaz de los servicios que tengas y sus modelos. Referenciala desde tu proyecto destino y haz que todo funcione igual que antes.
 
