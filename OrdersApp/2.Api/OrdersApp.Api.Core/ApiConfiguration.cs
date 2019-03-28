@@ -19,15 +19,8 @@ namespace OrdersApp.Api.Core
                     options.AssumeDefaultVersionWhenUnspecified = true;
                     options.DefaultApiVersion = new ApiVersion(1, 0);
                     options.ApiVersionReader = new HeaderApiVersionReader("x-apiversion");
-                })
-                .AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                });
             return services;
-        }
-
-        public static IApplicationBuilder UseOrdersAppApi(this IApplicationBuilder appBuilder)
-        {
-            appBuilder.UseMvc();
-            return appBuilder;
         }
     }
 }

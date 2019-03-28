@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace OrdersApp.Domain.Core
 {
@@ -11,6 +13,7 @@ namespace OrdersApp.Domain.Core
         public string Email { get; set; }
         public Gender Gender { get; set; }
         public DateTime LastUpdate { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
         public void Update(string name, string surname, int age, string email, Gender gender)
         {

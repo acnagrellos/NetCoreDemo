@@ -20,6 +20,7 @@ namespace OrdersApp.Host
 
             services.Configure<ConfigurationSettings>(configuration)
                 .AddSingleton<IClientsService, ClientsMemoryService>()
+                .AddSingleton<IProductsService, ProductsMemoryService>()
                 .AddSwaggerGen(gen =>
                 {
                     gen.SwaggerDoc("v1",
@@ -30,14 +31,14 @@ namespace OrdersApp.Host
                         });
                     gen.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 })
-                .AddOrdersAppApiServices();
+                .AddOrdersAppApiServices()
+                .AddMvc();
 
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseOrdersAppApi()
-                .UseCors(cors => cors
+            app.UseCors(cors => cors
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowAnyOrigin()
@@ -49,7 +50,8 @@ namespace OrdersApp.Host
                     swaggerOptions.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                     swaggerOptions.RoutePrefix = string.Empty;
                     
-                });
+                })
+                .UseMvc();
         }
     }
 }
