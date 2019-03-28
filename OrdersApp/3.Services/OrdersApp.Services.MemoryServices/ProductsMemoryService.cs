@@ -44,7 +44,7 @@ namespace OrdersApp.Services.MemoryServices
             }
             else
             {
-                return null;
+                throw new NotFoundException();
             }
         }
 

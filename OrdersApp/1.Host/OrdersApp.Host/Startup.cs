@@ -8,7 +8,6 @@ using OrdersApp.Services.Contracts;
 using OrdersApp.Services.MemoryServices;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Linq;
-using ApiStructure;
 
 namespace OrdersApp.Host
 {
@@ -45,6 +44,7 @@ namespace OrdersApp.Host
                     .AllowAnyOrigin()
                     .AllowCredentials())
                 .UseHttpsRedirection()
+                .UseMiddleware<ErrorMiddleware>()
                 .UseSwagger()
                 .UseSwaggerUI(swaggerOptions =>
                 {

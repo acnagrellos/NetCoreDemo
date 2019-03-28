@@ -3,7 +3,7 @@ using OrdersApp.Domain.Models.Exceptions;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ApiStructure
+namespace OrdersApp.Host
 {
     public class ErrorMiddleware
     {
