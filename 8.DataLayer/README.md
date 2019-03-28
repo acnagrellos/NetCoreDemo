@@ -6,3 +6,5 @@
 // public ICollection<OrderDetail> OrderDetails { get; set; }
 ```
 5. Añade ahora a la migracion la tabla Order sin los Tickets ni los OrdersDetail. Para ello comenta sus propiedades correspondientes.
+6. Añade a la base de datos tanto los Tickets como los OrderDetails. Comprueba que todo esta funcionando bien.
+7. Crea una llamada que haga que un usuario pueda guardar un pedido. Crea otra llamada que haga que un usuario pueda pagar un pedido. Hazlo todo con un nuevo servicio que vaya a base de datos y lo deje todo registrado.
