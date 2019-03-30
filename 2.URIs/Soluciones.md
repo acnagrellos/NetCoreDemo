@@ -1,10 +1,10 @@
 1. Analice estos nombres de URLs y exponga si son correctas o no y por qué.
 
 * PUT /users/56/edit ❌ => PUT users/56 (no se permiten verbos en las URIs)
-* GET /user/56 ❌ => GET user__r__/56 (es mejor poner los nombres en plural)
+* GET /user/56 ❌ => GET /user<b>s<b>/56 (es mejor poner los nombres en plural)
 * DELETE /users/ ❌ => DELETE users/56 (sería peligroso esta llamada, ya que borraría todos los usuarios del sistema. Mejor borrar por registro)
 * GET /users/56 ✔️
-* PUT /user/45  ❌ => PUT user__r__/45 (el plural de nuevo)
+* PUT /user/45  ❌ => PUT user<b>s<b>/45 (el plural de nuevo)
 * POST /users/create ❌ => POST /users (sin el verbo)
 * POST /user/create ❌ => POST /users (sin el verbo y en plural)
 * GET /users/56/invoice ❌ => GET users/56/invoices (en plural)
