@@ -31,11 +31,11 @@ app.Run(async (context) =>
 
 El Task.Delay está para poder diferenciar la hora de la llamada de la hora de cuando se crea un servicio. Antes del delay se crean los servicio para que el servicio de Scoped se cree la primera vez. Sino tanto el servicio scoped como el trasient se crearon a la vez y la hora será la misma.
 
-Al final el servicio Singleton saca la hora que el API se despleg�, el servicio Scoped marca el principio de la llamada y el Trasient la hora que se crean los servicios nuevos.
+Al final el servicio Singleton saca la hora que el API se desplega, el servicio Scoped marca el principio de la llamada y el Trasient la hora que se crean los servicios nuevos.
 
 5. Añade en el appsettings.json un parametro "ProjectSettings" y dentro de este otro con "ProjectName" cuyo valor será "ApiStructure". Saca ese valor en las requests como "Hello ".
 
-Para ello hay que a�adir los par�metros al json de appsettings, luego hay que crear un objeto para mapear los valores y añadir este mapeo en el ConfigureServices:
+Para ello hay que añadir los parámetros al json de appsettings, luego hay que crear un objeto para mapear los valores y añadir este mapeo en el ConfigureServices:
 
 appsettings.json:
 
