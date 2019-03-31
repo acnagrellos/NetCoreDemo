@@ -33,7 +33,7 @@ namespace ApiStructure
                         servicesCollection => servicesCollection.AddTransient<IServiceEnvironment, MiServicioEnProd>());
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServicioScoped serviceScoped, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             app.UseMiddleware<LanguageMiddleware>()
                .MapWhen(context => !context.Request.Path.StartsWithSegments("/api"),

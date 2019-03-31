@@ -128,7 +128,7 @@ public void ConfigureServices(IServiceCollection services)
 Para esto solo hay que cambiar el interfaz de IOptions por el de IOptionsSnapshot.
 
 ```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServicioScoped serviceScoped)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.Run(async (context) =>
     {
@@ -170,24 +170,24 @@ public static IWebHost BuildWebHost(string[] args) =>
 Y luego basta con usarlo en la clase ```Startup```:
 
 ```csharp
-        public void Configure(IApplicationBuilder app, ILogger<Startup> logger)
-        {
-            app.Run(async (context) =>
-            {
-                logger.LogWarning("Siempre se hace la misma llamada");
+public void Configure(IApplicationBuilder app, ILogger<Startup> logger)
+{
+    app.Run(async (context) =>
+    {
+        logger.LogWarning("Siempre se hace la misma llamada");
 
-				...
-                await context.Response.WriteAsync("Hello World!");
-            });
-        }
+		...
+        await context.Response.WriteAsync("Hello World!");
+    });
+}
 ```
 
 10. Devuelve un error 404 cuando el path de la request no empiece por "/api".
 
-La función MapWhen nos permite realizar acciones dependiendo de la condici�n que le pongamos al principio. Para ello lo podemos resolver as�:
+La función MapWhen nos permite realizar acciones dependiendo de la condición que le pongamos al principio. Para ello lo podemos resolver así:
 
 ```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServicioScoped serviceScoped, ILogger<Startup> logger)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
 {
     app.MapWhen(context => !context.Request.Path.StartsWithSegments("/api"),
                 appBuilder =>
@@ -245,7 +245,7 @@ public class Startup
                 .AddScoped<ILanguageService, LanguageService>();
     }
 
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServicioScoped serviceScoped, ILogger<Startup> logger)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
     {
 		...
         app.UseMiddleware<LanguageMiddleware>()
