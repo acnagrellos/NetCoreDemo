@@ -1,16 +1,16 @@
-2. Cambia el puerto del perfil ApiStructure al 9449. Ejécuta la solución con ese perfil.
+2. Cambia el puerto del perfil ApiStructure al 9449. Ejï¿½cuta la soluciï¿½n con ese perfil.
 
-Para cambiar el puerto al 9449 basta con hacerlo en el fichero ```launchSettings.json```. En él están los dos perfiles con los que podemos debuggear. Lo mejor es cambiarlo en el perfil del proyecto:
+Para cambiar el puerto al 9449 basta con hacerlo en el fichero ```launchSettings.json```. En ï¿½l estï¿½n los dos perfiles con los que podemos debuggear. Lo mejor es cambiarlo en el perfil del proyecto:
 
 ![launchSettings](./images/launchsettings.png)
 
-3. Ataca a tu API con la url: https://localhost:9449/test. ¿Que te devuelve? (usa postman)
+3. Ataca a tu API con la url: https://localhost:9449/test. ï¿½Que te devuelve? (usa postman)
 
 Siempre devuelve el mismo resultado: "Hello world!". Todas las direcciones de nuestro API devuelven lo mismo debido a la llamada ```app.Run();``` que hace que siempre se devuelva ese "Hello world!".
 
-4. En lugar de devolver Hello world! en cada petición, devuelve la hora que el sistema se conectó, la hora de la request actual, y la hora en el que se hace el new de un servicio que se llame MiServicioConHora. Para ello usa la inyección de dependencias en sus tres formas.
+4. En lugar de devolver Hello world! en cada peticiï¿½n, devuelve la hora que el sistema se conectï¿½, la hora de la request actual, y la hora en el que se hace el new de un servicio que se llame MiServicioConHora. Para ello usa la inyecciï¿½n de dependencias en sus tres formas.
 
-Para ello hay que usar la inyección de dependencias con sus diferentes maneras del ciclo de vida. Para eso se han creado tres servicios y se han usado en el run del proyecto:
+Para ello hay que usar la inyecciï¿½n de dependencias con sus diferentes maneras del ciclo de vida. Para eso se han creado tres servicios y se han usado en el run del proyecto:
 
 ```csharp
 app.Run(async (context) =>
@@ -29,13 +29,13 @@ app.Run(async (context) =>
 });
 ```
 
-El Task.Delay está para poder diferenciar la hora de la llamada de la hora de cuando se crea un servicio. Antes del delay se crean los servicio para que el servicio de Scoped se cree la primera vez. Sino tanto el servicio scoped como el trasient se crearán a la vez y la hora será la misma.
+El Task.Delay estï¿½ para poder diferenciar la hora de la llamada de la hora de cuando se crea un servicio. Antes del delay se crean los servicio para que el servicio de Scoped se cree la primera vez. Sino tanto el servicio scoped como el trasient se crearï¿½n a la vez y la hora serï¿½ la misma.
 
-Al final el servicio Singleton saca la hora que el API se desplegó, el servicio Scoped marca el principio de la llamada y el Trasient la hora que se crean los servicios nuevos.
+Al final el servicio Singleton saca la hora que el API se desplegï¿½, el servicio Scoped marca el principio de la llamada y el Trasient la hora que se crean los servicios nuevos.
 
-5. Añade en el appsettings.json un parametro "ProjectSettings" y dentro de este otro con "ProjectName" cuyo valor será "ApiStructure". Saca ese valor en las requests como "Hello ".
+5. Aï¿½ade en el appsettings.json un parametro "ProjectSettings" y dentro de este otro con "ProjectName" cuyo valor serï¿½ "ApiStructure". Saca ese valor en las requests como "Hello ".
 
-Para ello hay que añadir los parámetros al json de appsettings, luego hay que crear un objeto para mapear los valores y añadir este mapeo en el ConfigureServices:
+Para ello hay que aï¿½adir los parï¿½metros al json de appsettings, luego hay que crear un objeto para mapear los valores y aï¿½adir este mapeo en el ConfigureServices:
 
 appsettings.json:
 
@@ -49,7 +49,7 @@ appsettings.json:
 
 Startup:
 
-````csharp
+```csharp
 public class AppSettingsModel
 {
     public ProjectSettings ProjectSettings { get; set; }
@@ -69,13 +69,13 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-6. Añade un fichero appsettings.staging.json donde el nombre del proyecto sea ApiStructureStaging. Ejecuta el proyecto en modo Staging y comprueba que ese es el nombre que usa ahora.
+6. Aï¿½ade un fichero appsettings.staging.json donde el nombre del proyecto sea ApiStructureStaging. Ejecuta el proyecto en modo Staging y comprueba que ese es el nombre que usa ahora.
 
 Para eso hay que crear el fichero ```appsettings.staging.json``` y ejecutar el proyecto en el entorno de Staging. Para cambiar el entorno del proyecto podemos modificarlo en el fichero ```launchSettings```.
 
-7. Crea un servicio que se llame MiServicioEnProd que cumpla un interfaz IServiceEnvironment. Este interfaz tendrá un método que se llamará GetEnvironment y devolverá un string. Para el caso de MiServicioEnProd el servicio devolverá "Prod". Crea otro servicio que se llame MiServicioEnDev que implemente el interfaz IServiceEnvironment. En este caso el servicio devolverá "Dev" en el método GetEnvironment. Usa el servicio MiServicioEnDev solo cuando sea development el entorno que estamos ejecutando. Saca en la request "Hello <projectname>! This is environment <enviroment>"
+7. Crea un servicio que se llame MiServicioEnProd que cumpla un interfaz IServiceEnvironment. Este interfaz tendrï¿½ un mï¿½todo que se llamarï¿½ GetEnvironment y devolverï¿½ un string. Para el caso de MiServicioEnProd el servicio devolverï¿½ "Prod". Crea otro servicio que se llame MiServicioEnDev que implemente el interfaz IServiceEnvironment. En este caso el servicio devolverï¿½ "Dev" en el mï¿½todo GetEnvironment. Usa el servicio MiServicioEnDev solo cuando sea development el entorno que estamos ejecutando. Saca en la request "Hello <projectname>! This is environment <enviroment>"
 
-Para el ejercicio 7 basta con poner un if por el entorno en el método ConfigureServices:
+Para el ejercicio 7 basta con poner un if por el entorno en el mï¿½todo ConfigureServices:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -95,7 +95,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Para la solución en el proyecto se ha creado un método de extensión para crearlo todo con el patrón Builder. Con el método de extensión se puede pasar una condición y dependiendo de esto se procede con una opción o la otra:
+Para la soluciï¿½n en el proyecto se ha creado un mï¿½todo de extensiï¿½n para crearlo todo con el patrï¿½n Builder. Con el mï¿½todo de extensiï¿½n se puede pasar una condiciï¿½n y dependiendo de esto se procede con una opciï¿½n o la otra:
 
 ```csharp
 public static class IServiceCollectionExtensions
@@ -141,7 +141,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServi
 }
 ```
 
-9. Pon un logger en tu aplicación y logea un mensaje antes de enviar el mismo string que diga: "Siempre se hace la misma llamada".
+9. Pon un logger en tu aplicaciï¿½n y logea un mensaje antes de enviar el mismo string que diga: "Siempre se hace la misma llamada".
 
 Para configurar el logging lo podemos hacer en el ```Program.cs```:
 
@@ -184,7 +184,7 @@ Y luego basta con usarlo en la clase ```Startup```:
 
 10. Devuelve un error 404 cuando el path de la request no empiece por "/api".
 
-La función MapWhen nos permite realizar acciones dependiendo de la condición que le pongamos al principio. Para ello lo podemos resolver así:
+La funciï¿½n MapWhen nos permite realizar acciones dependiendo de la condiciï¿½n que le pongamos al principio. Para ello lo podemos resolver asï¿½:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServicioScoped serviceScoped, ILogger<Startup> logger)
@@ -202,7 +202,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMiServi
 }
 ```
 
-11. Crea un middleware que compruebe si la peticion tiene una cabecera llamada x-language. Si es así, guarda ese valor en un servicio que se llame MiLenguaje, si no hay cabecera por defecto su valor será "esp". Este servicio deberá de ser el mismo en toda la llamada. Saca el valor de este lenguaje por pantalla en el mensaje con un: "Hello <projectname>! This is environment <enviroment>, el lenguaje utilizado es <lang>"
+11. Crea un middleware que compruebe si la peticion tiene una cabecera llamada x-language. Si es asï¿½, guarda ese valor en un servicio que se llame MiLenguaje, si no hay cabecera por defecto su valor serï¿½ "esp". Este servicio deberï¿½ de ser el mismo en toda la llamada. Saca el valor de este lenguaje por pantalla en el mensaje con un: "Hello <projectname>! This is environment <enviroment>, el lenguaje utilizado es <lang>"
 
 Para este ejercicio crearemos un servicio Scoped para guardar el valor del lenguaje. Con ese servicio podemos crear el siguiente middleware que coge su valor para usarlo luego:
 
@@ -226,7 +226,7 @@ public class LanguageMiddleware
 }
 ```
 
-Es importante no inyectar el servicio en el constructor, sino hacerlo en la función ```Invoke```. Si lo hacemos en el constructor nos daría un error ya que no se podría crear un servicio Scoped para un Middleware en su constructor ya que el Middleware al ponerlo en el pipeline es Singleton por defecto.
+Es importante no inyectar el servicio en el constructor, sino hacerlo en la funciï¿½n ```Invoke```. Si lo hacemos en el constructor nos darï¿½a un error ya que no se podrï¿½a crear un servicio Scoped para un Middleware en su constructor ya que el Middleware al ponerlo en el pipeline es Singleton por defecto.
 
 Luego basta con poner el Middleware en el pipeline del Configure:
 
