@@ -1,15 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OrdersApp.Domain.Core
 {
     public class Ticket
     {
-        public int Id { get; set; }
-        public string Code { get; set; }
-        public double Amount { get; set; }
-        public DateTime Date { get; set; }
-        public Order Order {get; set; }
+        private Ticket() { }
+        public Ticket(Order order)
+        {
+            Order = order;
+            Code = Guid.NewGuid().ToString();
+            Amount = Order.Amount;
+            Date = DateTime.Now;
+        }
+
+        public int Id { get; private set; }
+        public string Code { get; private set; }
+        public double Amount { get; private set; }
+        public DateTime Date { get; private set; }
+        public Order Order {get; private set; }
     }
 }

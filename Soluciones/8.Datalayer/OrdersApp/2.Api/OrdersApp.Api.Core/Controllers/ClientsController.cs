@@ -13,10 +13,14 @@ namespace OrdersApp.Api.Core.Controllers
     public class ClientsController : ControllerBase
     {
         private readonly IClientsService _clientsService;
+        private readonly IOrdersService _ordersService;
 
-        public ClientsController(IClientsService clientsService)
+        public ClientsController(
+            IClientsService clientsService,
+            IOrdersService ordersService)
         {
             _clientsService = clientsService;
+            _ordersService = ordersService;
         }
 
         [HttpGet]
@@ -61,7 +65,33 @@ namespace OrdersApp.Api.Core.Controllers
             }
 
             var id = await _clientsService.Create(client);
-            return Created($"/{ApiConstants.BaseUri}/{ApiConstants.IdParamUri}/{id}", id);
+            return Created($"/{ApiConstants.BaseUri}/{ApiConstants.ClientUri}/{id}", id);
+        }
+
+        [HttpGet(ApiConstants.IdParamUri + "/" + ApiConstants.OrderUri + "/" + ApiConstants.OrderCodeUri)]
+        public async Task<ActionResult> GetOrder([FromRoute] int id, [FromRoute] string code)
+        {
+            var order = await _ordersService.GetOrder(code);
+            return Ok(order);
+        }
+
+        [HttpPost(ApiConstants.IdParamUri + "/" + ApiConstants.OrderUri)]
+        public async Task<ActionResult> CreateOrder([FromRoute] int id, [FromBody] OrderDto order)
+        {
+            if (order?.Details == null)
+            {
+                throw new PreConditionFailedModelException();
+            }
+
+            var orderCreated = await _ordersService.CreateOrder(id, order.Details);
+            return Created($"/{ApiConstants.BaseUri}/{ApiConstants.ClientUri}/{id}/{ApiConstants.OrderUri}/{orderCreated.Ticket.Code}", orderCreated.Ticket.Code);
+        }
+
+        [HttpPost(ApiConstants.IdParamUri + "/" + ApiConstants.OrderUri + "/" + ApiConstants.OrderCodeUri + "/" + ApiConstants.ClientPaidUri)]
+        public async Task<ActionResult> PaidOrder([FromRoute] string code)
+        {
+            await _ordersService.PaidOrder(code);
+            return Ok();
         }
     }
 }

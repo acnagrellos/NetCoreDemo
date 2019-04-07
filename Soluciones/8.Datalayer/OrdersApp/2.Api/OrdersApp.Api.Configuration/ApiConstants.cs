@@ -9,5 +9,8 @@
         public const string IdParamUri = "{id}";
 
         public const string ClientUri = "clients";
+        public const string OrderUri = "orders";
+        public const string OrderCodeUri = "{code}";
+        public const string ClientPaidUri = "paid";
     }
 }

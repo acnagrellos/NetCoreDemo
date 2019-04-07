@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrdersApp.Domain.Data;
 
 namespace OrdersApp.Domain.Data.Migrations
 {
     [DbContext(typeof(OrdersAppContext))]
-    partial class OrdersAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190407224643_OrderCompleteMigration")]
+    partial class OrderCompleteMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -24,7 +24,8 @@ namespace OrdersApp.Host
 
             services.Configure<ConfigurationSettings>(configuration)
                 .AddTransient<IClientsService, ClientsDapperService>()
-                .AddSingleton<IProductsService, ProductsDapperServices>()
+                .AddTransient<IOrdersService, OrdersEFService>()
+                .AddTransient<IProductsService, ProductsEFService>()
                 .AddDbContext<OrdersAppContext>(options =>
                 {
                     options.UseSqlServer(configuration.Get<ConfigurationSettings>().ConnectionStrings.DefaultConnection);

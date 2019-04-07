@@ -1,14 +1,32 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace OrdersApp.Domain.Core
 {
     public class Order
     {
-        public int Id { get; set; }
-        public int Amount { get; set; }
-        public Client Client { get; set; }
-        public int TicketId { get; set; }
-        public Ticket Ticket { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        private Order() { }
+
+        public Order(Client client, IEnumerable<OrderDetail> orderDetails)
+        {
+            Client = client;
+            Amount = orderDetails.Sum(detail => detail.Quantity * detail.Product.Price);
+            Ticket = new Ticket(this);
+            OrderDetails = orderDetails.ToList();
+            State = OrderState.Pending;
+        }
+
+        public int Id { get; private set; }
+        public double Amount { get; private set; }
+        public Client Client { get; private set; }
+        public int TicketId { get; private set; }
+        public Ticket Ticket { get; private set; }
+        public OrderState State { get; private set; }
+        public ICollection<OrderDetail> OrderDetails { get; private set; }
+
+        public void Paid()
+        {
+            State = OrderState.Paid;
+        }
     }
 }
