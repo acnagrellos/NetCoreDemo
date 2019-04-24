@@ -7,31 +7,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{90A763B0-FA1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Host", "1.Host", "{69BD4763-4BFD-4C54-BE59-4883138A0925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Host", "src\1.Host\OrdersApp.Host\OrdersApp.Host.csproj", "{334C0E8C-7347-4C04-ACA3-FCE9C95F8928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Host", "src\1.Host\OrdersApp.Host\OrdersApp.Host.csproj", "{334C0E8C-7347-4C04-ACA3-FCE9C95F8928}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Api", "2.Api", "{4380AC51-6B86-4A8E-9D08-4AE4A7DCB7A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Api.Core", "src\2.Api\OrdersApp.Api.Core\OrdersApp.Api.Core.csproj", "{D031E4A2-0740-4DD9-B4FF-BB59139C7DDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Api.Core", "src\2.Api\OrdersApp.Api.Core\OrdersApp.Api.Core.csproj", "{D031E4A2-0740-4DD9-B4FF-BB59139C7DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Api.Configuration", "src\2.Api\OrdersApp.Api.Configuration\OrdersApp.Api.Configuration.csproj", "{2FBBD62D-7F29-4DB2-82FC-D3A5CB302AA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Api.Configuration", "src\2.Api\OrdersApp.Api.Configuration\OrdersApp.Api.Configuration.csproj", "{2FBBD62D-7F29-4DB2-82FC-D3A5CB302AA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Services", "3.Services", "{B4E1F865-16C6-4B96-8FD7-CA87D2232A08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Services.Contracts", "src\3.Services\OrdersApp.Services.Contracts\OrdersApp.Services.Contracts.csproj", "{4A5055B0-C85C-4B3F-987A-C2C616C2110A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Services.Contracts", "src\3.Services\OrdersApp.Services.Contracts\OrdersApp.Services.Contracts.csproj", "{4A5055B0-C85C-4B3F-987A-C2C616C2110A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Services.Core", "src\3.Services\OrdersApp.Services.Core\OrdersApp.Services.Core.csproj", "{37708DEB-5479-4CA5-9625-6E0C26D21BEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Services.Core", "src\3.Services\OrdersApp.Services.Core\OrdersApp.Services.Core.csproj", "{37708DEB-5479-4CA5-9625-6E0C26D21BEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Services.Commands", "src\3.Services\OrdersApp.Services.Commands\OrdersApp.Services.Commands.csproj", "{073171A8-65F1-4D90-9300-F158228B156F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Services.Commands", "src\3.Services\OrdersApp.Services.Commands\OrdersApp.Services.Commands.csproj", "{073171A8-65F1-4D90-9300-F158228B156F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Services.Queries", "src\3.Services\OrdersApp.Services.Queries\OrdersApp.Services.Queries.csproj", "{5E593E8F-9B40-42E7-AA60-F8EDC2A7316A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Services.Queries", "src\3.Services\OrdersApp.Services.Queries\OrdersApp.Services.Queries.csproj", "{5E593E8F-9B40-42E7-AA60-F8EDC2A7316A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Domain", "4.Domain", "{097B182A-E635-4EDE-A27A-A11B7385009C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Domain.Core", "src\4.Domain\OrdersApp.Domain.Core\OrdersApp.Domain.Core.csproj", "{9D238188-60A4-4C63-9996-D187E4C93844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Domain.Core", "src\4.Domain\OrdersApp.Domain.Core\OrdersApp.Domain.Core.csproj", "{9D238188-60A4-4C63-9996-D187E4C93844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Domain.Models", "src\4.Domain\OrdersApp.Domain.Models\OrdersApp.Domain.Models.csproj", "{A2CDB3C6-A1A6-4355-AA58-401576B286D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Domain.Models", "src\4.Domain\OrdersApp.Domain.Models\OrdersApp.Domain.Models.csproj", "{A2CDB3C6-A1A6-4355-AA58-401576B286D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp.Domain.Data", "src\4.Domain\OrdersApp.Domain.Data\OrdersApp.Domain.Data.csproj", "{76D0E84B-FE62-4A49-A959-E206A572D8C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.Domain.Data", "src\4.Domain\OrdersApp.Domain.Data\OrdersApp.Domain.Data.csproj", "{76D0E84B-FE62-4A49-A959-E206A572D8C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{361AC86F-5583-4B28-9258-1FE41AFF6934}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiTests", "ApiTests", "{101D7C3C-6646-45BB-932C-97E878F69CA9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersApp.ApiTests", "test\ApiTests\OrdersApp.ApiTests\OrdersApp.ApiTests.csproj", "{3686194D-2D90-4C77-89C5-71FB9BCA68D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +169,18 @@ Global
 		{76D0E84B-FE62-4A49-A959-E206A572D8C2}.Release|x64.Build.0 = Release|Any CPU
 		{76D0E84B-FE62-4A49-A959-E206A572D8C2}.Release|x86.ActiveCfg = Release|Any CPU
 		{76D0E84B-FE62-4A49-A959-E206A572D8C2}.Release|x86.Build.0 = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|x64.Build.0 = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Debug|x86.Build.0 = Debug|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|x64.ActiveCfg = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|x64.Build.0 = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|x86.ActiveCfg = Release|Any CPU
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,6 +200,8 @@ Global
 		{9D238188-60A4-4C63-9996-D187E4C93844} = {097B182A-E635-4EDE-A27A-A11B7385009C}
 		{A2CDB3C6-A1A6-4355-AA58-401576B286D9} = {097B182A-E635-4EDE-A27A-A11B7385009C}
 		{76D0E84B-FE62-4A49-A959-E206A572D8C2} = {097B182A-E635-4EDE-A27A-A11B7385009C}
+		{101D7C3C-6646-45BB-932C-97E878F69CA9} = {361AC86F-5583-4B28-9258-1FE41AFF6934}
+		{3686194D-2D90-4C77-89C5-71FB9BCA68D0} = {101D7C3C-6646-45BB-932C-97E878F69CA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5867BB39-2E3A-4BA1-8AB7-DF14397AA1EC}

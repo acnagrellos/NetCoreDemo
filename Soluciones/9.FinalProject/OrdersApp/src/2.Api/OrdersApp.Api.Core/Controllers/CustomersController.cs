@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OrdersApp.Api.Core.Controllers
 {
     [ApiController]
-    [Route(ApiConstants.BaseUri + "/[controller]")]
+    [Route(ApiConstants.BaseUri + "/" + ApiConstants.CustomerUri)]
     public class CustomersController : ControllerBase
     {
         private readonly ICustomersService _customerService;
